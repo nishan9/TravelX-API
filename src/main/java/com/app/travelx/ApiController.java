@@ -2,12 +2,13 @@ package com.app.travelx;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.amadeus.resources.FlightOfferSearch;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value="/api")
+@RequestMapping(value="api", produces = MediaType.APPLICATION_JSON_VALUE)
 
 public class ApiController {
 
