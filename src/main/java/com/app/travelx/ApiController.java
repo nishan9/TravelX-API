@@ -12,11 +12,6 @@ import java.util.ArrayList;
 
 public class ApiController {
 
-	@GetMapping(value = "/private")
-	public Message privateEndpoint() {
-		return new Message("All good. You can see this because you are Authenticated.");
-	}
-
 	@GetMapping("/locations")
 	public ArrayList<Suggestions> locations(@RequestParam(required=true) String keyword) throws ResponseException {
 		Location [] results = AmadeusConnect.INSTANCE.location(keyword);

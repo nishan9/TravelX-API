@@ -20,7 +20,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .mvcMatchers("/api/private").authenticated()
+                .mvcMatchers("/api/locations").authenticated()
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
         return http.build();
