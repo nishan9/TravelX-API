@@ -6,7 +6,7 @@ Use `./mvnw spring-boot:run` in the home directory.
 # Authorisation Flow
 The following diagram shows how the application authorisation flow works:
 
-![Authorisation Flow](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---vwuds3t-YxT9AbAsMEQpP---figure---vhnfp7DaSoydBvnDKtHlhg.png "Authorisation Flow")
+![Authorisation Flow](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---QSFwpNzd4aLUs5wuxthh6---figure---vhnfp7DaSoydBvnDKtHlhg.png "Authorisation Flow")
 
 
 
@@ -21,6 +21,7 @@ Push up the code with
 ```
 git add .
 git commit -m "Commit Message"
+git push -u origin feature/name
 ```
 Create a pull request on GitHub and wait for someone to review it. 
 
