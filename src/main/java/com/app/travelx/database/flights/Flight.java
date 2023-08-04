@@ -1,5 +1,4 @@
 package com.app.travelx.database.flights;
-import com.app.travelx.database.flights.Flight;
 import com.app.travelx.database.passengers.Passenger;
 
 import javax.persistence.*;
@@ -34,8 +33,9 @@ public class Flight {
     public Flight() {
         super();
     }
-    public Flight(String origin, String departTime, String arrivalTime, boolean nonstop, String airline, int price, String currency) {
+    public Flight(String origin, String destination, String departTime, String arrivalTime, boolean nonstop, String airline, int price, String currency) {
         this.origin = origin;
+        this.destination = destination;
         this.departTime = departTime;
         this.arrivalTime = arrivalTime;
         this.nonstop = nonstop;
