@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class AmadeusController {
 
+	//getlocations
 	@GetMapping("/locations")
 	public ArrayList<SuggestionsModel> locations(@RequestParam(required=true) String keyword) throws ResponseException {
 		Location [] results = AmadeusConnect.INSTANCE.location(keyword);
@@ -33,4 +34,6 @@ public class AmadeusController {
 													 throws ResponseException {
 		return AmadeusConnect.INSTANCE.onewayflightsnonstop(origin, destination, departDate, adults);
 	}
+
+
 }
