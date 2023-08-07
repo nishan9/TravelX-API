@@ -2,8 +2,12 @@ package com.app.travelx.amadeus;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.amadeus.resources.FlightOfferSearch;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 @RestController
@@ -30,10 +34,10 @@ public class AmadeusController {
 
 	@GetMapping("/onewayflightsnonstop")
 	//public FlightOfferSearch[] onewayflightsnonstop (@RequestParam(required=true) String origin,
-	public ArrayList<FlightInfoModel> onewayflightsnonstop (@RequestParam(required=true) String origin,
-													 @RequestParam(required=true) String destination,
-													 @RequestParam(required=true) String departDate,
-													 @RequestParam(required=true) String adults)
+	public ResponseEntity<ArrayList<FlightInfoModel>> onewayflightsnonstop (@RequestParam(required=true) String origin,
+													   @RequestParam(required=true) String destination,
+													   @RequestParam(required=true) String departDate,
+													   @RequestParam(required=true) String adults)
 													 throws ResponseException {
 		FlightOfferSearch [] search = AmadeusConnect.INSTANCE.onewayflightsnonstop(origin, destination, departDate, adults);
 		ArrayList<FlightInfoModel> flights = new ArrayList<>();
@@ -46,11 +50,12 @@ public class AmadeusController {
 			String currerncy = search[i].getPrice().getCurrency();
 			double totalPrice = search[i].getPrice().getGrandTotal();
 			int availableSeats = search[i].getNumberOfBookableSeats();
-			String duration = search[i].getItineraries()[0].getDuration();
+			String duration = search[i].getItineraries()[0].getDuration().substring(2);
 			flights.add(new FlightInfoModel(departLocation, arrivalLocation, departTime, arrivalTime, airline, currerncy, totalPrice,
 					availableSeats, duration));
 		}
-		return flights;
+		//return flights;
+		return new ResponseEntity<> (flights, HttpStatus.CREATED);
 	}
 
 
