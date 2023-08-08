@@ -39,7 +39,6 @@ public class SecurityConfig {
                 .anyRequest().permitAll() // Allow all requests to all endpoints
                 .and().cors()
                 .and().csrf().disable(); // Disable CSRF protection if needed
-
         return http.build();
     }
 
