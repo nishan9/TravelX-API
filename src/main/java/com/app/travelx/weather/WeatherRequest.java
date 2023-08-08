@@ -1,4 +1,4 @@
-package com.app.travelx.weather.dto;
+package com.app.travelx.weather;
 
 public class WeatherRequest {
     private String cityName;

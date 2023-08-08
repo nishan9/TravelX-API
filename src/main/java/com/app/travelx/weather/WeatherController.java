@@ -1,20 +1,25 @@
-package com.app.travelx.weather.controllers;
-
+package com.app.travelx.weather;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.app.travelx.weather.services.WeatherService;
 
 @RestController
+@RequestMapping("/api/weather")
 public class WeatherController {
 
     @Autowired
     private WeatherService weatherService;
 
-    @GetMapping("/weather")
+    @GetMapping
+    public void getMsg(){
+        System.out.println("fdfd");
+    }
+
+
     public JSONObject getWeather(@RequestParam String cityName, @RequestParam String units) {
         return weatherService.getWeather(cityName, units);
     }

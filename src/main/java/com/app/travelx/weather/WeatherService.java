@@ -1,5 +1,4 @@
-package com.app.travelx.weather.services;
-
+package com.app.travelx.weather;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.json.JSONArray;
