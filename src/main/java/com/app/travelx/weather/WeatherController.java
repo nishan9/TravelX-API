@@ -14,37 +14,33 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
+
     @GetMapping
-    public void getMsg(){
-        System.out.println("fdfd");
-    }
-
-
-    public JSONObject getWeather(@RequestParam String cityName, @RequestParam String units) {
-        return weatherService.getWeather(cityName, units);
+    public JSONObject getWeather(@RequestParam String cityName) {
+        return weatherService.getWeather(cityName);
     }
 
     @GetMapping("/weatherArray")
-    public JSONArray getWeatherArray(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
+    public JSONArray getWeatherArray(@RequestParam String cityName) {
+        JSONObject weatherData = weatherService.getWeather(cityName);
         return weatherService.extractWeatherArray(weatherData);
     }
 
     @GetMapping("/main")
-    public JSONObject getMain(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
+    public JSONObject getMain(@RequestParam String cityName) {
+        JSONObject weatherData = weatherService.getWeather(cityName);
         return weatherService.extractMain(weatherData);
     }
 
     @GetMapping("/sys")
-    public JSONObject getSys(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
+    public JSONObject getSys(@RequestParam String cityName) {
+        JSONObject weatherData = weatherService.getWeather(cityName);
         return weatherService.extractSys(weatherData);
     }
 
     @GetMapping("/wind")
-    public JSONObject getWind(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
+    public JSONObject getWind(@RequestParam String cityName) {
+        JSONObject weatherData = weatherService.getWeather(cityName);
         return weatherService.extractWind(weatherData);
     }
 }
