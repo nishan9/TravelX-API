@@ -10,14 +10,14 @@ Run the application via `./mvnw spring-boot:run` in the home directory.
 # Authorisation Flow
 The following diagram shows how the application authorisation flow works:
 
-![Authorisation Flow](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---5EZBRnd0jPh0zAogk9VOr---figure---vhnfp7DaSoydBvnDKtHlhg.png "Authorisation Flow")
+![Authorisation Flow](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---oBjVNl6M2yDtFaNPqBlnO---figure---vhnfp7DaSoydBvnDKtHlhg.png "Authorisation Flow")
 
 
 
 # Entity Relationship Diagram
 
 
-![ERD](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---H8zCgv3SDmwQSEGOBjghQ---figure---RrGZRELgTlsSRVsgyxw5mw.png "ERD")
+![ERD](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---_YqrANLAr1CktGtRRJqcj---figure---RrGZRELgTlsSRVsgyxw5mw.png "ERD")
 
 # Contributions
 To follow the feature branch workflow, create a new branch with the following.
@@ -27,6 +27,8 @@ Ensure you are in front of the main branch to minimise the risk of conflicts:
 ```
 git pull origin main
 ```
+Ensure there is a `.gitignore` file so your target folder is not pushed. 
+
 Create a new branch with an appropriate name of the feature you are working on:
 
 ```
