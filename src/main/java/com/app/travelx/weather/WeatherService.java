@@ -7,8 +7,12 @@ import org.json.JSONObject;
 @Service
 public class WeatherService {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     private final String apiKey = "f9ec786fc529e0b49f6e586ba83a6f1e";
+
+    public WeatherService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public JSONObject getWeather(String cityName, String units) {
         String url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=" + units + "&appid=" + apiKey;
