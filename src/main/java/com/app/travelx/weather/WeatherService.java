@@ -1,5 +1,4 @@
 package com.app.travelx.weather;
-import org.json.JSONArray;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -7,18 +6,13 @@ import org.springframework.web.client.RestTemplate;
 import org.json.JSONObject;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-//import java.util.ArrayList;
 
 @Service
 public class WeatherService {
     private final RestTemplate restTemplate = new RestTemplate();
-    //public JSONArray getWeather(String latitude, String longitude, String date){
     public ResponseEntity<WeatherModel> getWeather(String latitude, String longitude, String date){
         if (checkDateFormat(date) && isDateWithin16Days(date)){
              String url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude +
@@ -30,7 +24,8 @@ public class WeatherService {
 
             JSONObject daily = all.getJSONObject("daily");
 
-            int summary = daily.getJSONArray("weathercode").getInt(0);
+            int code = daily.getJSONArray("weathercode").getInt(0);
+            String summary = weatherCode(code);
             float maxTemp = daily.getJSONArray("temperature_2m_max").getFloat(0);
             float minTemp = daily.getJSONArray("temperature_2m_min").getFloat(0);
             float maxApparentTemp = daily.getJSONArray("apparent_temperature_max").getFloat(0);
@@ -47,6 +42,24 @@ public class WeatherService {
             return new ResponseEntity<> (weatherModel, HttpStatus.OK);
         }else{
             return null;
+        }
+    }
+
+    public String weatherCode(int code){
+        if (code <= 1){
+            return "Clear Sky";
+        }else if (code <= 3){
+            return "Partly Cloudy";
+        }else if (code <= 49){
+            return "Fog";
+        }else if (code <= 57){
+            return "Drizzle";
+        }else if (code <= 67 || (code >= 80 && code <= 82)){
+            return "Rain";
+        }else if (code <= 77 || code == 85 || code == 86){
+            return "Snow";
+        }else {
+            return "Thunderstorm";
         }
     }
 

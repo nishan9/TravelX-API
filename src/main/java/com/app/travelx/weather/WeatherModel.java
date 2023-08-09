@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class WeatherModel {
-    private int summary;
+    private String summary;
     private float maxTemp;
     private float minTemp;
     private float maxApparentTemp;
@@ -19,7 +19,7 @@ public class WeatherModel {
     private String sunrise;
     private String sunset;
 
-    public WeatherModel(int summary, float maxTemp, float minTemp, float maxApparentTemp, float minApparentTemp, float uvMax, float rainSum, int precipitationProbMax, float snowSum, String sunrise, String sunset) {
+    public WeatherModel(String summary, float maxTemp, float minTemp, float maxApparentTemp, float minApparentTemp, float uvMax, float rainSum, int precipitationProbMax, float snowSum, String sunrise, String sunset) {
         this.summary = summary;
         this.maxTemp = maxTemp;
         this.minTemp = minTemp;
