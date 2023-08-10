@@ -15,11 +15,6 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping
-    public void getMsg(){
-        System.out.println("fdfd");
-    }
-
-
     public JSONObject getWeather(@RequestParam String cityName, @RequestParam String units) {
         return weatherService.getWeather(cityName, units);
     }
