@@ -22,6 +22,5 @@ public class WeatherController {
                                                 @RequestParam(required = true) String date) throws ResponseException {
         return service.getWeather(latitude, longitude, date);
     }
-
-
 }
+
