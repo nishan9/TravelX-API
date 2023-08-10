@@ -37,7 +37,7 @@ public class AmadeusControllerTest {
 
     @Test
     public void testGetFlights() throws ResponseException {
-        FlightOfferSearch[] flightOfferSearches = {}; // Sample data here
+        FlightOfferSearch[] flightOfferSearches = {}; 
         when(amadeusService.flights(any(), any(), any(), any())).thenReturn(flightOfferSearches);
 
         ResponseEntity<ArrayList<FlightInfoModel>> response = amadeusController.getFlights("LHR", "CDG", "2023-09-09", "1");
@@ -46,12 +46,11 @@ public class AmadeusControllerTest {
 
     @Test
     public void testLocations() throws ResponseException {
-        Location[] locations = {}; // Sample data here
+        Location[] locations = {};
         when(amadeusService.location(any())).thenReturn(locations);
 
         ResponseEntity<ArrayList<SuggestionsModel>> response = amadeusController.locations("Keyword");
         assertEquals(200, response.getStatusCodeValue());
     }
 
-    // Add more tests, including edge cases, unexpected behaviors, and exception scenarios
 }

@@ -1,9 +1,12 @@
 package com.app.travelx.amadeus;
 
+import org.springframework.stereotype.Service;
+
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.Location;
 
+@Service
 public class AmadeusServiceImpl implements AmadeusService {
 
     @Override
