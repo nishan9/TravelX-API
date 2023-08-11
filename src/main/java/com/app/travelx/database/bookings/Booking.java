@@ -29,7 +29,7 @@ public class Booking {
 
     private String airline;
 
-    private int price;
+    private double price;
 
     private String currency;
 
@@ -52,7 +52,7 @@ public class Booking {
     public Booking() {
         super();
     }
-    public Booking(String origin, String destination, String departDateTime, String arrivalDateTime, boolean nonstop, String airline, int price, String currency) {
+    public Booking(String origin, String destination, String departDateTime, String arrivalDateTime, boolean nonstop, String airline, double price, String currency) {
         this.isPaid = false;
         this.origin = origin;
         this.destination = destination;
@@ -120,11 +120,11 @@ public class Booking {
         this.airline = airline;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
