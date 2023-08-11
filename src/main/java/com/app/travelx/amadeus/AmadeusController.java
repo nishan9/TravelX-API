@@ -2,10 +2,13 @@ package com.app.travelx.amadeus;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.Location;
 import com.amadeus.resources.FlightOfferSearch;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -15,6 +18,10 @@ import java.util.ArrayList;
 @CrossOrigin
 @RequestMapping("/api/amadeus")
 public class AmadeusController {
+
+	@Autowired
+	private AmadeusService amadeusService;
+
 
 	@GetMapping
 	public ResponseEntity<ArrayList<FlightInfoModel>> getFlights (@RequestParam(required=true) String origin,
