@@ -39,6 +39,13 @@ Commit and push up the code when you are ready:
 ```
 git add .
 git commit -m "Commit Message"
+git checkout dev
+git pull
+git checkout feature/name
+git merge dev
+(solve merge conflicts)
+git add .
+git commit -m "Commit Message"
 git push -u origin feature/name
 ```
 Login to Github and create a pull request and wait for someone to review it.

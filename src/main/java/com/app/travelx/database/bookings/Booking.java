@@ -1,24 +1,27 @@
-package com.app.travelx.database.flights;
+package com.app.travelx.database.bookings;
 import com.app.travelx.database.passengers.Passenger;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "_flight")
-public class Flight {
+@Table(name = "_booking")
+public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int flightid;
+    private int bookingid;
     private String origin;
     private String destination;
 
-    @Column(name = "depart_time")
-    private String departTime;
+    private boolean isPaid;
 
-    @Column(name = "arrival_time")
-    private String arrivalTime;
+    @Column(name = "depart_date_time")
+    private String departDateTime;
+
+    @Column(name = "arrival_date_time")
+    private String arrivalDateTime;
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Passenger> passengerid;
@@ -26,18 +29,35 @@ public class Flight {
 
     private String airline;
 
-    private int price;
+    private double price;
 
     private String currency;
 
-    public Flight() {
+    public int getBookingid() {
+        return bookingid;
+    }
+
+    public void setBookingid(int bookingid) {
+        this.bookingid = bookingid;
+    }
+
+    public boolean isPaid() {
+        return isPaid;
+    }
+
+    public void setPaid(boolean paid) {
+        isPaid = paid;
+    }
+
+    public Booking() {
         super();
     }
-    public Flight(String origin, String destination, String departTime, String arrivalTime, boolean nonstop, String airline, int price, String currency) {
+    public Booking(String origin, String destination, String departDateTime, String arrivalDateTime, boolean nonstop, String airline, double price, String currency) {
+        this.isPaid = false;
         this.origin = origin;
         this.destination = destination;
-        this.departTime = departTime;
-        this.arrivalTime = arrivalTime;
+        this.departDateTime = departDateTime;
+        this.arrivalDateTime = arrivalDateTime;
         this.nonstop = nonstop;
         this.airline = airline;
         this.price = price;
@@ -50,14 +70,6 @@ public class Flight {
 
     public void setPassengerList(List<Passenger> passengerid) {
         this.passengerid = passengerid;
-    }
-
-    public int getFlightid() {
-        return flightid;
-    }
-
-    public void setFlightid(int flightid) {
-        this.flightid = flightid;
     }
 
     public String getOrigin() {
@@ -76,20 +88,20 @@ public class Flight {
         this.origin = origin;
     }
 
-    public String getDepartTime() {
-        return departTime;
+    public String getDepartDateTime() {
+        return departDateTime;
     }
 
-    public void setDepartTime(String departTime) {
-        this.departTime = departTime;
+    public void setDepartDateTime(String departDateTime) {
+        this.departDateTime = departDateTime;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    public String getArrivalDateTime() {
+        return arrivalDateTime;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setArrivalDateTime(String arrivalDateTime) {
+        this.arrivalDateTime = arrivalDateTime;
     }
 
     public boolean isNonstop() {
@@ -108,11 +120,11 @@ public class Flight {
         this.airline = airline;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

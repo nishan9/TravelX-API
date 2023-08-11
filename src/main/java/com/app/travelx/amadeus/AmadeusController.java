@@ -54,7 +54,9 @@ public class AmadeusController {
 			String iataCode = location.getIataCode();
 			String cityName = location.getAddress().getCityName();
 			String airportName = location.getName();
-			suggestions.add(new SuggestionsModel(airportName, iataCode, cityName));
+			double latitude = location.getGeoCode().getLatitude();
+			double longitude = location.getGeoCode().getLongitude();
+			suggestions.add(new SuggestionsModel(airportName, iataCode, cityName, latitude, longitude));
 		}
 		return new ResponseEntity<> (suggestions, HttpStatus.OK);
 	}

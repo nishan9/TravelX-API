@@ -1,5 +1,4 @@
 package com.app.travelx.database.passengers;
-import com.app.travelx.database.flights.Flight;
 
 import javax.persistence.*;
 
