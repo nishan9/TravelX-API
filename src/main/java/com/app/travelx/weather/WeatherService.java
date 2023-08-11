@@ -12,7 +12,21 @@ import java.util.regex.Pattern;
 
 @Service
 public class WeatherService {
+
+    //private final RestTemplate restTemplate;
+    private final String apiKey = "f9ec786fc529e0b49f6e586ba83a6f1e";
     private final RestTemplate restTemplate = new RestTemplate();
+
+    public WeatherService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
+    public JSONObject getWeather(String cityName, String units) {
+        String url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=" + units + "&appid=" + apiKey;
+        String response = restTemplate.getForObject(url, String.class);
+        return new JSONObject(response);
+
+
     public ResponseEntity<WeatherModel> getWeather(String latitude, String longitude, String date){
         if (checkDateFormat(date) && isDateWithin16Days(date)){
              String url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude +
