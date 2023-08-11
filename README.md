@@ -10,24 +10,26 @@ Run the application via `./mvnw spring-boot:run` in the home directory.
 # Authorisation Flow
 The following diagram shows how the application authorisation flow works:
 
-![Authorisation Flow](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---OZnkHHrLqc0Iu4WUTZcdS---figure---vhnfp7DaSoydBvnDKtHlhg.png "Authorisation Flow")
+![Authorisation Flow](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---oBjVNl6M2yDtFaNPqBlnO---figure---vhnfp7DaSoydBvnDKtHlhg.png "Authorisation Flow")
 
 
 
 # Entity Relationship Diagram
 
 
-![Entity Relationship](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---Bzig9-uG2Y7Gldu_UkKz8---figure---B3-G5gwp5E8775HoDi6ogg.png "Entity Relationship")
+![ERD](/.eraser/FZOdoDP7gyF1Ceo5SjWs___U6y9emfrl8eHDv3I72P3GpFUUJa2___---figure---_YqrANLAr1CktGtRRJqcj---figure---RrGZRELgTlsSRVsgyxw5mw.png "ERD")
 
 # Contributions
-To follow ≥the feature branch workflow, create a new branch with the following.
+To follow the feature branch workflow, create a new branch with the following.
 
 Ensure you are in front of the main branch to minimise the risk of conflicts: 
 
 ```
 git pull origin main
 ```
-Create a new branch with an appropriate name of the feature you are working on: /≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥
+Ensure there is a `.gitignore` file so your target folder is not pushed. 
+
+Create a new branch with an appropriate name of the feature you are working on:
 
 ```
 git checkout -b feature/name
@@ -37,9 +39,16 @@ Commit and push up the code when you are ready:
 ```
 git add .
 git commit -m "Commit Message"
+git checkout dev
+git pull
+git checkout feature/name
+git merge dev
+(solve merge conflicts)
+git add .
+git commit -m "Commit Message"
 git push -u origin feature/name
 ```
-Login to Github and create a pull request and wait for someone to review it. 
+Login to Github and create a pull request and wait for someone to review it.
 
 
 <!--- Eraser file: https://app.eraser.io/workspace/FZOdoDP7gyF1Ceo5SjWs --->
