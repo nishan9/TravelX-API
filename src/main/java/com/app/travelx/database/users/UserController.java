@@ -1,15 +1,15 @@
 package com.app.travelx.database.users;
-import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.app.travelx.database.bookings.Booking;
 import com.app.travelx.database.bookings.NewBookingModel;
-import com.app.travelx.database.flights.Flight;
-import com.app.travelx.database.passengers.Passenger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -44,9 +44,28 @@ public class UserController {
           }
     }
 
-    @PostMapping("addflight")
-    public ResponseEntity addFlight(@RequestBody NewBookingModel request) {
-        userService.addFlights(request.getFlightList(), request.getAuth0id());
-        return new ResponseEntity<>("added new flight", HttpStatus.OK);
+    //New bookings, isPaid will be set to false by default
+    @PostMapping("newbooking")
+    public ResponseEntity<List<Integer>> newBooking(@RequestBody NewBookingModel request) {
+        List<Integer> BookingIDs = userService.addBooking(request.getBookingList(), request.getAuth0id());
+        return new ResponseEntity<>(BookingIDs, HttpStatus.OK);
     }
+
+    @PutMapping("changeIsPaid")
+    public ResponseEntity changeIsPaid(@RequestBody ChangeIsPaidModel RequestChange) {
+        userService.ChangeIsPaid(RequestChange.BookingIDs, RequestChange.auth0id);
+        return new ResponseEntity<>("now paid", HttpStatus.OK);
+    }
+
+    @GetMapping("unpaidBookings")
+    public ResponseEntity<List<Booking>> getUnpaidBookings(@RequestBody User user){
+        return new ResponseEntity<>(userService.getUnPaidBookings(user.getAuth0id()), HttpStatus.OK);
+    }
+
+    @GetMapping("upcomingBooking")
+    public ResponseEntity<List<Booking>> getUpcomingBookings(@RequestBody User user) throws Exception{
+        return new ResponseEntity<>(userService.upComingBoookings(user.getAuth0id()), HttpStatus.OK);
+    }
+
+
 }

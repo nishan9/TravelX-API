@@ -1,5 +1,5 @@
 package com.app.travelx.database.users;
-import com.app.travelx.database.flights.Flight;
+import com.app.travelx.database.bookings.Booking;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,17 +16,17 @@ public class User {
     private String lastName;
 
     @OneToMany(cascade=CascadeType.ALL)
-    private List<Flight> flightid;
+    private List<Booking> bookings;
     public User() {
         super();
     }
 
-    public List<Flight> getFlightList() {
-        return flightid;
+    public List<Booking> getBookingList() {
+        return bookings;
     }
 
-    public void setFlightList(List<Flight> flightid) {
-        this.flightid = flightid;
+    public void setBookingList(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public User(String auth0id, String firstName, String lastName) {
