@@ -1,24 +1,22 @@
 package com.app.travelx.database.bookings;
 
-import com.app.travelx.database.flights.Flight;
-
 import java.util.ArrayList;
 
 public class NewBookingModel {
-    private ArrayList<Flight> flights;
+    private ArrayList<Booking> bookings;
     private String auth0id;
 
-    public NewBookingModel(String auth0id, ArrayList<Flight> flightList){
-        this.flights = flightList;
+    public NewBookingModel(String auth0id, ArrayList<Booking> flightList){
+        this.bookings = flightList;
         this.auth0id = auth0id;
     }
 
-    public ArrayList<Flight> getFlightList() {
-        return flights;
+    public ArrayList<Booking> getBookingList() {
+        return bookings;
     }
 
-    public void setFlightList(ArrayList<Flight> flightList) {
-        this.flights = flightList;
+    public void setFlightList(ArrayList<Booking> bookingList) {
+        this.bookings = bookingList;
     }
 
     public String getAuth0id() {
