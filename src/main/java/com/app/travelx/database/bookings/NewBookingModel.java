@@ -11,6 +11,10 @@ public class NewBookingModel {
         this.auth0id = auth0id;
     }
 
+    public NewBookingModel() {
+
+    }
+
     public ArrayList<Booking> getBookingList() {
         return bookings;
     }
@@ -21,6 +25,14 @@ public class NewBookingModel {
 
     public String getAuth0id() {
         return auth0id;
+    }
+
+    public ArrayList<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(ArrayList<Booking> bookings) {
+        this.bookings = bookings;
     }
 
     public void setAuth0id(String auth0id) {
