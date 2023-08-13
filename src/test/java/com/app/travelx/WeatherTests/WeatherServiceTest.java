@@ -28,7 +28,8 @@ public class WeatherServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
+
+
     public void testGetWeatherSuccess() {
 
         String latitude = "50";
