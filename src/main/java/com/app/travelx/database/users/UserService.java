@@ -74,7 +74,7 @@ public class UserService {
 
     public List<Booking> pastBookings(String auth0id){
         User owner = userExists(auth0id);
-        return owner.getBookingList().stream().filter( booking -> {
+        return owner.getBookings().stream().filter( booking -> {
             try {
                 return booking.isPaid() && convertDate(booking.getDepartDateTime()).compareTo(new Date()) < 0;
             } catch (Exception e) {

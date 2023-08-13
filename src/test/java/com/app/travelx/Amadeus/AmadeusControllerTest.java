@@ -1,43 +1,23 @@
 package com.app.travelx.Amadeus;
-
-import com.amadeus.Amadeus;
 import com.amadeus.exceptions.ResponseException;
-import com.amadeus.resources.FlightOfferSearch;
-import com.amadeus.resources.Location;
 import com.app.travelx.amadeus.AmadeusController;
 import com.app.travelx.amadeus.AmadeusService;
 import com.app.travelx.amadeus.SuggestionsModel;
 import com.app.travelx.amadeus.FlightInfoModel;
-
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 
 public class AmadeusControllerTest {
 
@@ -70,7 +50,7 @@ public class AmadeusControllerTest {
             assertThat(fields[2].getName()).isEqualTo("departTime");
             assertThat(fields[3].getName()).isEqualTo("arrivalTime");
             assertThat(fields[4].getName()).isEqualTo("airline");
-            assertThat(fields[5].getName()).isEqualTo("currerncy");
+            assertThat(fields[5].getName()).isEqualTo("currency");
             assertThat(fields[6].getName()).isEqualTo("totalPrice");
             assertThat(fields[7].getName()).isEqualTo("availableSeats");
             assertThat(fields[8].getName()).isEqualTo("duration");
@@ -96,5 +76,4 @@ public class AmadeusControllerTest {
         assertThat(responseArray.get(0).getLatitude()).isEqualTo(testLocation.getLatitude());
         assertThat(responseArray.get(0).getLongitude()).isEqualTo(testLocation.getLongitude());
     }
-**/
 }

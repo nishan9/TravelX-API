@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -24,4 +23,18 @@ public class FlightInfoModel {
     private double totalPrice;
 
     private int availableSeats;
+
+    private String duration;
+
+    public FlightInfoModel(String departLocation, String arrivalLocation, String departTime, String arrivalTime, String airline, String currency, double totalPrice, int availableSeats, String duration) {
+        this.departLocation = departLocation;
+        this.arrivalLocation = arrivalLocation;
+        this.departTime = departTime;
+        this.arrivalTime = arrivalTime;
+        this.airline = airline;
+        this.currency = currency;
+        this.totalPrice = totalPrice;
+        this.availableSeats = availableSeats;
+        this.duration = duration;
+    }
 }
