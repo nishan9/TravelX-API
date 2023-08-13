@@ -67,5 +67,4 @@ public class UserController {
         return new ResponseEntity<>(userService.upComingBoookings(user.getAuth0id()), HttpStatus.OK);
     }
 
-
 }
