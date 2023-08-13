@@ -13,10 +13,7 @@ public class NewBookingModel {
 
     private ArrayList<Booking> bookings;
 
-    private String auth0id;
-
     private String phone;
 
     private String email;
-
 }

@@ -18,37 +18,35 @@ public class SecurityConfig {
     private String issuer;
 
 
+    /***
 
-
-    /**
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
-                .mvcMatchers("/users/add").permitAll()
+                .mvcMatchers("/api/public").permitAll()
                 .mvcMatchers("/api/private").authenticated()
+                .mvcMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")
                 .and().cors()
                 .and().oauth2ResourceServer().jwt();
         return http.build();
     }
      **/
 
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .anyRequest().permitAll() // Allow all requests to all endpoints
+                .anyRequest().permitAll()
                 .and().cors()
-                .and().csrf().disable(); // Disable CSRF protection if needed
+                .and().csrf().disable();
         return http.build();
     }
 
     //Validating Aud Claim
     @Bean
     JwtDecoder jwtDecoder() {
-
         NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
                 JwtDecoders.fromOidcIssuerLocation(issuer);
-
         OAuth2TokenValidator<Jwt> audienceValidator = new AudienceValidator(audience);
         OAuth2TokenValidator<Jwt> withIssuer = JwtValidators.createDefaultWithIssuer(issuer);
         OAuth2TokenValidator<Jwt> withAudience = new DelegatingOAuth2TokenValidator<>(withIssuer, audienceValidator);
