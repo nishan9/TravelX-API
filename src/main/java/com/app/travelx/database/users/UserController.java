@@ -69,14 +69,15 @@ public class UserController {
     public ResponseEntity getUpcomingBookings() throws Exception{
         return new ResponseEntity<>(userService.upComingBoookings(tokenWrapper.getSub()), HttpStatus.OK);
     }
-
+  
     @GetMapping("/pastBookings")
     public ResponseEntity getPastBookings() throws Exception{
         return new ResponseEntity<>(userService.pastBookings(tokenWrapper.getSub()), HttpStatus.OK);
     }
 
     @PatchMapping("/update")
-    public ResponseEntity getPastBookings(@RequestBody User user) throws Exception{
+    public ResponseEntity updateUser(@RequestBody User user) throws Exception{
         return new ResponseEntity<>(userService.updateDetails(tokenWrapper.getSub(), user.getFirstName(), user.getLastName()), HttpStatus.OK);
     }
+
 }
