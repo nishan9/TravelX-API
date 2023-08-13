@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+
 @AllArgsConstructor
+@Getter
+@Setter
 public class WeatherModel {
     private String summary;
     private float maxTemp;
@@ -22,5 +26,4 @@ public class WeatherModel {
     private float snowSum;
     private String sunrise;
     private String sunset;
-
 }
