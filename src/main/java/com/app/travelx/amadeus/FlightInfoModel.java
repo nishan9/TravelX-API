@@ -22,5 +22,4 @@ public class FlightInfoModel {
     private int availableSeats;
 
     private String duration;
-
 }
