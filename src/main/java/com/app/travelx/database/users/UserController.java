@@ -47,7 +47,7 @@ public class UserController {
     //New bookings, isPaid will be set to false by default
     @PostMapping("newbooking")
     public ResponseEntity<List<Integer>> newBooking(@RequestBody NewBookingModel request) {
-        List<Integer> BookingIDs = userService.addBooking(request.getBookingList(), request.getAuth0id());
+        List<Integer> BookingIDs = userService.addBooking(request.getBookings(), request.getAuth0id(), request.getEmail(), request.getPhone());
         return new ResponseEntity<>(BookingIDs, HttpStatus.OK);
     }
 

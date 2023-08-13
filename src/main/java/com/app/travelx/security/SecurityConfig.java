@@ -42,12 +42,9 @@ public class SecurityConfig {
         return http.build();
     }
 
+    //Validating Aud Claim
     @Bean
     JwtDecoder jwtDecoder() {
-        /*
-        By default, Spring Security does not validate the "aud" claim of the token, to ensure that this token is
-        indeed intended for our app. Adding our own validator is easy to do.
-        */
 
         NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
                 JwtDecoders.fromOidcIssuerLocation(issuer);

@@ -24,15 +24,16 @@ public class UserService {
         }
         return user.get();
     }
-    public List<Integer> addBooking(List<Booking> bookings, String auth0id){
+    public List<Integer> addBooking(List<Booking> bookings, String auth0id, String email, String phone){
         int numOfBookings = bookings.size();
         User owner = userExists(auth0id);
-        if (owner.getBookingList().isEmpty()){
-            owner.setBookingList(bookings);
+        if (owner.getBookings().isEmpty()){
+            owner.setBookings(bookings);
         } else {
-            bookings.addAll(owner.getBookingList());
-            owner.setBookingList(bookings);
+            bookings.addAll(owner.getBookings());
+            owner.setBookings(bookings);
         }
+
         repo.save(owner);
         List<Integer> bookingIDs = new ArrayList<>();
         for (int i = 0; i < numOfBookings; i++) {
@@ -44,21 +45,21 @@ public class UserService {
     public void ChangeIsPaid(List<Integer> bookingIDs, String auth0id){
         User owner = userExists(auth0id);
         List<Booking> bookingsList = new ArrayList<>();
-        bookingsList = owner.getBookingList();
+        bookingsList = owner.getBookings();
         bookingsList.forEach(booking -> {if (bookingIDs.contains(booking.getBookingid())) {booking.setPaid(true);}});
-        owner.setBookingList(bookingsList);
+        owner.setBookings(bookingsList);
         repo.save(owner);
     }
 
     public List<Booking> getUnPaidBookings(String auth0id){
         User owner = userExists(auth0id);
-        return owner.getBookingList().stream().filter( booking -> !booking.isPaid()).collect(Collectors.toList());
+        return owner.getBookings().stream().filter( booking -> !booking.isPaid()).collect(Collectors.toList());
     }
 
     public List<Booking> upComingBoookings(String auth0id) throws Exception{
         User owner = userExists(auth0id);
 
-        return owner.getBookingList().stream().filter( booking -> {
+        return owner.getBookings().stream().filter( booking -> {
             try {
                 return booking.isPaid() && convertDate(booking.getDepartDateTime()).compareTo(new Date()) > 0;
             } catch (Exception e) {
