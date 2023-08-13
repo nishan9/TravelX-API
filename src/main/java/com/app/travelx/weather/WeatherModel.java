@@ -1,11 +1,19 @@
 package com.app.travelx.weather;
 
+import lombok.AllArgsConstructor;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+
+
+@AllArgsConstructor
+@Getter
+@Setter
 public class WeatherModel {
     private String summary;
     private float maxTemp;
@@ -18,18 +26,4 @@ public class WeatherModel {
     private float snowSum;
     private String sunrise;
     private String sunset;
-
-    public WeatherModel(String summary, float maxTemp, float minTemp, float maxApparentTemp, float minApparentTemp, float uvMax, float rainSum, int precipitationProbMax, float snowSum, String sunrise, String sunset) {
-        this.summary = summary;
-        this.maxTemp = maxTemp;
-        this.minTemp = minTemp;
-        this.maxApparentTemp = maxApparentTemp;
-        this.minApparentTemp = minApparentTemp;
-        this.uvMax = uvMax;
-        this.rainSum = rainSum;
-        this.precipitationProbMax = precipitationProbMax;
-        this.snowSum = snowSum;
-        this.sunrise = sunrise;
-        this.sunset = sunset;
-    }
 }

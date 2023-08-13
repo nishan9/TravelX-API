@@ -4,7 +4,6 @@ import com.amadeus.Amadeus;
 import com.amadeus.exceptions.ResponseException;
 import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.Location;
-//import com.app.travelx.amadeus.*;
 import com.app.travelx.amadeus.AmadeusController;
 import com.app.travelx.amadeus.AmadeusService;
 import com.app.travelx.amadeus.SuggestionsModel;
@@ -51,7 +50,7 @@ public class AmadeusControllerTest {
     private MockMvc mockMVC;
     @Autowired
     private ObjectMapper mapper;
-
+  
     @BeforeEach
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
@@ -97,5 +96,5 @@ public class AmadeusControllerTest {
         assertThat(responseArray.get(0).getLatitude()).isEqualTo(testLocation.getLatitude());
         assertThat(responseArray.get(0).getLongitude()).isEqualTo(testLocation.getLongitude());
     }
-
+**/
 }
