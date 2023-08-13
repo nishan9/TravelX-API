@@ -42,6 +42,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    //Validating Aud Claim
     @Bean
     JwtDecoder jwtDecoder() {
         NimbusJwtDecoder jwtDecoder = (NimbusJwtDecoder)
