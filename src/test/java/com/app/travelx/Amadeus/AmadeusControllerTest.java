@@ -59,12 +59,8 @@ public class AmadeusControllerTest {
 
     @Test
     public void testGetFlights() throws ResponseException {
-//        FlightOfferSearch[] flightOfferSearches = {};
-//        when(amadeusService.flights(any(), any(), any(), any())).thenReturn(flightOfferSearches);
-        //FlightInfoModel testFlights = new FlightInfoModel();
 
         ResponseEntity<ArrayList<FlightInfoModel>> response = amadeusController.getFlights("LHR", "CDG", "2023-09-09", "1");
-        //assertEquals(200, response.getStatusCodeValue());
         ArrayList<FlightInfoModel> responseArray = response.getBody();
         if (!responseArray.isEmpty()) {
             FlightInfoModel sampleFlight = responseArray.get(0);
