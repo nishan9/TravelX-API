@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "_passenger")
 @Data
 @NoArgsConstructor
+@Table(name = "_passenger")
 public class Passenger {
 
     @Id

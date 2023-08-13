@@ -37,7 +37,8 @@ public class UserService {
             bookings.addAll(owner.getBookings());
             owner.setBookings(bookings);
         }
-
+        owner.setEmail(email);
+        owner.setPhone(phone);
         repo.save(owner);
         List<Integer> bookingIDs = new ArrayList<>();
         for (int i = 0; i < numOfBookings; i++) {

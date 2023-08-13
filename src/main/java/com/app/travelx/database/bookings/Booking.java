@@ -7,9 +7,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "_booking")
 @Data
 @NoArgsConstructor
+@Table(name = "_booking")
 public class Booking {
 
     @Id
@@ -31,7 +31,8 @@ public class Booking {
     private String arrivalDateTime;
 
     @OneToMany(cascade=CascadeType.ALL)
-    private List<Passenger> passengerid;
+    private List<Passenger> passengers;
+
     private boolean nonstop;
 
     private String airline;
