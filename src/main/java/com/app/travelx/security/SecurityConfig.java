@@ -17,22 +17,15 @@ public class SecurityConfig {
     @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     private String issuer;
 
-
-    /***
-
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .mvcMatchers("/api/public").permitAll()
-                .mvcMatchers("/api/private").authenticated()
-                .mvcMatchers("/api/private-scoped").hasAuthority("SCOPE_read:messages")
-                .and().cors()
+    public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests(authorizeRequests -> authorizeRequests.mvcMatchers("/api/public").permitAll().anyRequest().authenticated())
+                .cors()
                 .and().oauth2ResourceServer().jwt();
         return http.build();
     }
-     **/
 
-
+/***
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -42,6 +35,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+ **/
     //Validating Aud Claim
     @Bean
     JwtDecoder jwtDecoder() {

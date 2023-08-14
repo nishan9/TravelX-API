@@ -1,4 +1,4 @@
-package com.app.travelx.sms;
+package com.app.travelx.database.users.sms;
 
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.rest.api.v2010.account.MessageCreator;
@@ -7,8 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.regex.Pattern;
 
 @Service("twilio")
 public class TwilioSMSSender implements SMSSender {

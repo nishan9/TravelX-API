@@ -1,4 +1,4 @@
-package com.app.travelx.sms;
+package com.app.travelx.database.users.sms;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

@@ -16,13 +16,12 @@ public class User {
 
     @Id
     private String auth0id;
+
     @Column(name = "first_name")
     private String firstName;
+
     @Column(name = "last_name")
     private String lastName;
-
-//    @Column(name = "phone_number")
-//    private String phoneNumber;
 
     @OneToMany(cascade=CascadeType.ALL)
     private List<Booking> bookings;

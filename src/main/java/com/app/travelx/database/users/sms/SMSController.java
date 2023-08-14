@@ -1,4 +1,4 @@
-package com.app.travelx.sms;
+package com.app.travelx.database.users.sms;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

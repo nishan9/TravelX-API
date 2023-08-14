@@ -1,6 +1,7 @@
 package com.app.travelx.database.users;
 import com.app.travelx.database.bookings.Booking;
 import com.app.travelx.security.BearerTokenWrapper;
+import com.app.travelx.database.users.sms.SMSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,11 @@ public class UserService {
 
     @Autowired
     private BearerTokenWrapper tokenWrapper;
+
+    @Autowired
+    private SMSService smsService;
+
+
 
     public User userExists(String auth0id){
         Optional<User> user = repo.findById(auth0id);
