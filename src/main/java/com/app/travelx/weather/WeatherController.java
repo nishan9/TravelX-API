@@ -1,7 +1,8 @@
 package com.app.travelx.weather;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
+import com.amadeus.exceptions.ResponseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,39 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class WeatherController {
 
     @Autowired
-    private WeatherService weatherService;
+    private WeatherService service;
 
-    @GetMapping
-    public void getMsg(){
-        System.out.println("fdfd");
-    }
-
-
-    public JSONObject getWeather(@RequestParam String cityName, @RequestParam String units) {
-        return weatherService.getWeather(cityName, units);
-    }
-
-    @GetMapping("/weatherArray")
-    public JSONArray getWeatherArray(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
-        return weatherService.extractWeatherArray(weatherData);
-    }
-
-    @GetMapping("/main")
-    public JSONObject getMain(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
-        return weatherService.extractMain(weatherData);
-    }
-
-    @GetMapping("/sys")
-    public JSONObject getSys(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
-        return weatherService.extractSys(weatherData);
-    }
-
-    @GetMapping("/wind")
-    public JSONObject getWind(@RequestParam String cityName, @RequestParam String units) {
-        JSONObject weatherData = weatherService.getWeather(cityName, units);
-        return weatherService.extractWind(weatherData);
+    @GetMapping()
+    public ResponseEntity<WeatherModel> weather(@RequestParam(required = true) String latitude,
+            @RequestParam(required = true) String longitude,
+            @RequestParam(required = true) String date) throws ResponseException {
+        return service.getWeather(latitude, longitude, date);
     }
 }

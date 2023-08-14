@@ -22,10 +22,10 @@ The following diagram shows how the application authorisation flow works:
 # Contributions
 To follow the feature branch workflow, create a new branch with the following.
 
-Ensure you are in front of the main branch to minimise the risk of conflicts: 
+Ensure you are in front of the dev branch to minimise the risk of conflicts: 
 
 ```
-git pull origin main
+git pull origin dev
 ```
 Ensure there is a `.gitignore` file so your target folder is not pushed. 
 
@@ -34,21 +34,28 @@ Create a new branch with an appropriate name of the feature you are working on:
 ```
 git checkout -b feature/name
 ```
-Commit and push up the code when you are ready:  
+
+After each session or sufficicient changes. 
 
 ```
 git add .
 git commit -m "Commit Message"
+```
+
+Once you are ready with your feature pull the latest dev branch. 
+```
 git checkout dev
-git pull
+git pull origin dev
+```
+Go back to your own branch and merge dev into your own branch. 
+
+```
 git checkout feature/name
 git merge dev
-(solve merge conflicts)
-git add .
-git commit -m "Commit Message"
-git push -u origin feature/name
 ```
-Login to Github and create a pull request and wait for someone to review it.
+
+If there are conflicts please resolve them. 
+Once resolved, Login to Github and create a pull request and wait for someone to review it. Once reviewed your branch will be merged into dev.
 
 
 <!--- Eraser file: https://app.eraser.io/workspace/FZOdoDP7gyF1Ceo5SjWs --->

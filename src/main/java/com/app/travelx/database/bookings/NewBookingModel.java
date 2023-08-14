@@ -1,31 +1,19 @@
 package com.app.travelx.database.bookings;
-
-import com.app.travelx.database.flights.Flight;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import java.util.ArrayList;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class NewBookingModel {
-    private ArrayList<Flight> flights;
-    private String auth0id;
 
-    public NewBookingModel(String auth0id, ArrayList<Flight> flightList){
-        this.flights = flightList;
-        this.auth0id = auth0id;
-    }
+    private ArrayList<Booking> bookings;
 
-    public ArrayList<Flight> getFlightList() {
-        return flights;
-    }
+    private String phone;
 
-    public void setFlightList(ArrayList<Flight> flightList) {
-        this.flights = flightList;
-    }
-
-    public String getAuth0id() {
-        return auth0id;
-    }
-
-    public void setAuth0id(String auth0id) {
-        this.auth0id = auth0id;
-    }
+    private String email;
 }

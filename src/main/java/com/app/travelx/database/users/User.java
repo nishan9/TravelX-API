@@ -1,10 +1,16 @@
 package com.app.travelx.database.users;
-import com.app.travelx.database.flights.Flight;
+import com.app.travelx.database.bookings.Booking;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "_user")
 public class User {
 
@@ -19,48 +25,15 @@ public class User {
 //    private String phoneNumber;
 
     @OneToMany(cascade=CascadeType.ALL)
-    private List<Flight> flightid;
-    public User() {
-        super();
-    }
+    private List<Booking> bookings;
 
-    public List<Flight> getFlightList() {
-        return flightid;
-    }
+    private String phone;
 
-    public void setFlightList(List<Flight> flightid) {
-        this.flightid = flightid;
-    }
+    private String email;
 
-    public User(String auth0id, String firstName, String lastName) {
-        super();
+    public User(String auth0id, String firstName, String lastName){
+        this.auth0id = auth0id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.auth0id = auth0id;
     }
-
-    public String getAuth0id() {
-        return auth0id;
-    }
-
-    public void setAuth0id(String auth0id) {
-        this.auth0id = auth0id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
 }
