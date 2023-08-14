@@ -27,32 +27,6 @@ public class WeatherServiceTest {
     public void setup() {
         MockitoAnnotations.openMocks(this);
     }
-
-
-
-    public void testGetWeatherSuccess() {
-
-        String latitude = "50";
-        String longitude = "0";
-        String date = "2023-08-14";
-
-        String url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude +
-                "&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,"
-                +
-                "sunrise,sunset,uv_index_max,precipitation_sum,rain_sum,snowfall_sum,precipitation_hours," +
-                "precipitation_probability_max,windspeed_10m_max&timezone=GMT&start_date=" + date + "&end_date=" + date;
-
-        String sampleResponse = "{ \"daily\": {\"weathercode\":[2],\"temperature_2m_max\":[25.5],\"temperature_2m_min\":[10],\"apparent_temperature_max\":[28],\"apparent_temperature_min\":[12],\"uv_index_max\":[5],\"rain_sum\":[10],\"precipitation_probability_max\":[80],\"snowfall_sum\":[0],\"sunrise\":[\"06:00\"],\"sunset\":[\"19:00\"]}}";
-
-        when(restTemplate.getForObject(url, String.class)).thenReturn(sampleResponse);
-
-        ResponseEntity<WeatherModel> response = weatherService.getWeather("50", "0", "2023-08-14");
-
-        assertNotNull(response);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Partly Cloudy", response.getBody().getSummary());
-    }
-
     @Test
     public void testGetWeatherEmptyAPIResponse() {
         String latitude = "";

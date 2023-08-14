@@ -66,17 +66,17 @@ public class UserController {
     }
 
     @GetMapping("/upcomingBooking")
-    public ResponseEntity getUpcomingBookings() throws Exception{
+    public ResponseEntity getUpcomingBookings(){
         return new ResponseEntity<>(userService.upComingBoookings(tokenWrapper.getSub()), HttpStatus.OK);
     }
   
     @GetMapping("/pastBookings")
-    public ResponseEntity getPastBookings() throws Exception{
+    public ResponseEntity getPastBookings(){
         return new ResponseEntity<>(userService.pastBookings(tokenWrapper.getSub()), HttpStatus.OK);
     }
 
     @PatchMapping("/update")
-    public ResponseEntity updateUser(@RequestBody User user) throws Exception{
+    public ResponseEntity updateUser(@RequestBody User user){
         return new ResponseEntity<>(userService.updateDetails(tokenWrapper.getSub(), user.getFirstName(), user.getLastName()), HttpStatus.OK);
     }
 

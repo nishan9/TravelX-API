@@ -1,0 +1,27 @@
+name : unit-tests
+
+on:
+  push:
+    branches:
+      - dev
+      - main
+  pull_request:
+    types: [opened, reopened, synchronize]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version : 11
+
+      - name : run unit tests
+        run : mvn clean test
