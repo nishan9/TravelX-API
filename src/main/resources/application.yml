@@ -19,3 +19,7 @@ logging:
     org:
       hibernate:
         SQL: DEBUG
+twilio:
+  account_sid: ACf7cf2a1b94cda0422896bbf8ba84a000
+  auth_token: 8ffd5d26788a55fe3f64e57e873b8322
+  trial_number: +447883303184
