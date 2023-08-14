@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 @Getter
 @Setter
 public class WeatherModel {
+    private String date;
     private String summary;
     private float maxTemp;
     private float minTemp;
