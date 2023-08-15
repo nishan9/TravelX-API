@@ -28,6 +28,6 @@ enum AmadeusConnect {
                         .and("departureDate", departDate)
                         .and("adults", adults)
                         .and("nonStop", true)
-                        .and("max", 3));
+                        .and("max", 10));
     }
 }
