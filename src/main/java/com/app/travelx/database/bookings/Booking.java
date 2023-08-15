@@ -41,4 +41,5 @@ public class Booking {
 
     private String currency;
 
+    private String duration;
 }
