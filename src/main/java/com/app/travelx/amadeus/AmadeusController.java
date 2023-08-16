@@ -36,7 +36,7 @@ public class AmadeusController {
 			String arrivalLocation = search[i].getItineraries()[0].getSegments()[0].getArrival().getIataCode();
 			String departTime = search[i].getItineraries()[0].getSegments()[0].getDeparture().getAt();
 			String arrivalTime = search[i].getItineraries()[0].getSegments()[0].getArrival().getAt();
-			String airline = search[i].getItineraries()[0].getSegments()[0].getCarrierCode();
+			String airline = search[i].getItineraries()[0].getSegments()[0].getCarrierCode()+ search[i].getItineraries()[0].getSegments()[0].getNumber();
 			String currency = search[i].getPrice().getCurrency();
 			double totalPrice = search[i].getPrice().getGrandTotal();
 			int availableSeats = search[i].getNumberOfBookableSeats();
