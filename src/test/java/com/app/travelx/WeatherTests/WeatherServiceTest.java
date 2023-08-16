@@ -49,7 +49,7 @@ public class WeatherServiceTest {
     public void testGetWeatherInvalidLatitudeLongitude() {
         String latitude = "200";
         String longitude = "0";
-        String date = "2023-08-14";
+        String date = "2023-08-20";
 
         String url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude +
                 "&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,"
