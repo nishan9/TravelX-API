@@ -27,7 +27,7 @@ public class WeatherService {
                 String url = "https://api.open-meteo.com/v1/forecast?latitude="+latitude+"&longitude="+longitude+
                         "&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min," +
                         "sunrise,sunset,uv_index_max,precipitation_sum,rain_sum,snowfall_sum,precipitation_hours," +
-                        "precipitation_probability_max,windspeed_10m_max&timezone=GMT&start_date="+date+"&end_date="+date+"&forecast_days=16&timezone=Europe%2FLondon";
+                        "precipitation_probability_max,windspeed_10m_max&timezone=GMT&start_date="+date+"&end_date="+date+"&forecast_days=16&timezone=auto";
                 String response = restTemplate.getForObject(url, String.class);
                 JSONObject all = new JSONObject(response);
 
