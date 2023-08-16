@@ -77,7 +77,7 @@ public class WeatherService {
                 LocalDate startDate = calcStart(date);
                 ArrayList<WeatherModel> weekWeather = new ArrayList<>();
                 DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                for (int i = 0; i < 7; i++) {
+                for (int i = 0; i < 6; i++) {
                     String formattedDate = startDate.plusDays(i).format(dateFormatter);
                     weekWeather.add((getWeather(latitude, longitude, formattedDate)).getBody());
                 }
@@ -137,7 +137,7 @@ public class WeatherService {
         LocalDate parsedDate = LocalDate.parse(inputDate, formatter);
 
         long daysDifference = ChronoUnit.DAYS.between(currentDate, parsedDate);
-        if (Math.abs(daysDifference) <= 9){
+        if (Math.abs(daysDifference) <= 10){
             return parsedDate;
         }else if(Math.abs(daysDifference) <= 16) {
             return currentDate.plusDays(10);
