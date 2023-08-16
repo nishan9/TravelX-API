@@ -23,7 +23,7 @@ public class WeatherModel {
     private float minTemp;
     private float maxApparentTemp;
     private float minApparentTemp;
-    private float uvMax;
+    private float wind;
     private float rainSum;
     private int precipitationProbMax;
     private float snowSum;

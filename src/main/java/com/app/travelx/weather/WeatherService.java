@@ -40,7 +40,7 @@ public class WeatherService {
                 float minTemp = daily.getJSONArray("temperature_2m_min").getFloat(0);
                 float maxApparentTemp = daily.getJSONArray("apparent_temperature_max").getFloat(0);
                 float minApparentTemp = daily.getJSONArray("apparent_temperature_min").getFloat(0);
-                float uvMax = daily.getJSONArray("uv_index_max").getFloat(0);
+                float wind = daily.getJSONArray("windspeed_10m_max").getFloat(0);
                 int rainSum = 0;
                 int precipitationProbMax = 0;
                 float snowSum = (float) 0.0;
@@ -58,7 +58,7 @@ public class WeatherService {
 
                 WeatherModel weatherModel = new WeatherModel(time, summary, maxTemp, minTemp, maxApparentTemp,
                         minApparentTemp,
-                        uvMax, rainSum, precipitationProbMax, snowSum, sunrise, sunset);
+                        wind, rainSum, precipitationProbMax, snowSum, sunrise, sunset);
                 return new ResponseEntity<>(weatherModel, HttpStatus.OK);
             } else {
                 return null;
