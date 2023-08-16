@@ -95,9 +95,9 @@ public class WeatherService {
 
     public String weatherCode(int code) {
         if (code <= 1) {
-            return "Clear Sky";
+            return "Sunny";
         } else if (code <= 3) {
-            return "Partly Cloudy";
+            return "Cloudy";
         } else if (code <= 49) {
             return "Fog";
         } else if (code <= 57) {

@@ -85,8 +85,8 @@ public class WeatherServiceTest {
 
     @Test
     public void testWeatherCode() {
-        assertEquals("Clear Sky", weatherService.weatherCode(1));
-        assertEquals("Partly Cloudy", weatherService.weatherCode(3));
+        assertEquals("Sunny", weatherService.weatherCode(1));
+        assertEquals("Cloudy", weatherService.weatherCode(3));
         assertEquals("Fog", weatherService.weatherCode(49));
         assertEquals("Drizzle", weatherService.weatherCode(57));
         assertEquals("Rain", weatherService.weatherCode(67));
