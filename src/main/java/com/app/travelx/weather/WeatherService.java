@@ -44,6 +44,7 @@ public class WeatherService {
                 int rainSum = 0;
                 int precipitationProbMax = 0;
                 float snowSum = (float) 0.0;
+                float uvMax = daily.getJSONArray("uv_index_max").getFloat(0);
                 if (!daily.getJSONArray("precipitation_probability_max").isNull(0)) {
                     precipitationProbMax = daily.getJSONArray("precipitation_probability_max").getInt(0);
                 }
@@ -58,7 +59,7 @@ public class WeatherService {
 
                 WeatherModel weatherModel = new WeatherModel(time, summary, maxTemp, minTemp, maxApparentTemp,
                         minApparentTemp,
-                        wind, rainSum, precipitationProbMax, snowSum, sunrise, sunset);
+                        wind, uvMax, precipitationProbMax, snowSum, sunrise, sunset);
                 return new ResponseEntity<>(weatherModel, HttpStatus.OK);
             } else {
                 return null;
