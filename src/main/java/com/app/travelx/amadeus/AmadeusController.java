@@ -44,6 +44,7 @@ public class AmadeusController {
 			flights.add(new FlightInfoModel(departLocation, arrivalLocation, departTime, arrivalTime, airline, currency, totalPrice,
 					availableSeats, duration));
 		}
+
 		return new ResponseEntity<> (flights, HttpStatus.OK);
 	}
 	@GetMapping("/locations")

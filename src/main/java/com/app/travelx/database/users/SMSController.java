@@ -1,4 +1,4 @@
-package com.app.travelx.sms;
+package com.app.travelx.database.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +11,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/sms")
 public class SMSController {
-    private final SMSService smsService;
+    SMSService smsService;
 
     @Autowired
     public SMSController(SMSService smsService) {
