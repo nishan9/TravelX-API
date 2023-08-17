@@ -21,11 +21,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @Autowired
     SMSService smsService;
 
     @Autowired
     private BearerTokenWrapper tokenWrapper;
-
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
@@ -62,9 +62,19 @@ public class UserController {
     @PutMapping("/changeIsPaid")
     public ResponseEntity changeIsPaid(@RequestBody ChangeIsPaidModel RequestChange) {
         userService.ChangeIsPaid(RequestChange.BookingIDs, RequestChange.auth0id);
+        try {
+            SendSMS();
+        }catch (Exception ignore)
+        {
+            return new ResponseEntity<>("now paid", HttpStatus.OK);
+
+        }
+        return new ResponseEntity<>("now paid", HttpStatus.OK);
+    }
+
+    public void SendSMS(){
         SMSRequest smsRequest = new SMSRequest("+447596474645", "Thank you for using GetYourWay! You have successfully booked a flight!");
         smsService.sendSMS(smsRequest);
-        return new ResponseEntity<>("now paid", HttpStatus.OK);
     }
 
     @GetMapping("/unpaidBookings")
