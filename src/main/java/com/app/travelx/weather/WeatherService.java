@@ -44,21 +44,21 @@ public class WeatherService {
                 int rainSum = 0;
                 int precipitationProbMax = 0;
                 float snowSum = (float) 0.0;
+                float uvMax = daily.getJSONArray("uv_index_max").getFloat(0);
                 if (!daily.getJSONArray("precipitation_probability_max").isNull(0)) {
                     precipitationProbMax = daily.getJSONArray("precipitation_probability_max").getInt(0);
                 }
                 if (!daily.getJSONArray("rain_sum").isNull(0)){
                     rainSum = daily.getJSONArray("rain_sum").getInt(0);
                 }
-                if (!daily.getJSONArray("snowfall_sum").isNull(0)){
-                    snowSum = daily.getJSONArray("snowfall_sum").getFloat(0);
-                }
+//                if (!daily.getJSONArray("snowfall_sum").isNull(0)){
+//                    snowSum = daily.getJSONArray("snowfall_sum").getFloat(0);
+//                }
                 String sunrise = daily.getJSONArray("sunrise").getString(0);
                 String sunset = daily.getJSONArray("sunset").getString(0);
 
                 WeatherModel weatherModel = new WeatherModel(time, summary, maxTemp, minTemp, maxApparentTemp,
-                        minApparentTemp,
-                        wind, rainSum, precipitationProbMax, snowSum, sunrise, sunset);
+                        minApparentTemp, wind, rainSum, precipitationProbMax, uvMax, sunrise, sunset);
                 return new ResponseEntity<>(weatherModel, HttpStatus.OK);
             } else {
                 return null;
