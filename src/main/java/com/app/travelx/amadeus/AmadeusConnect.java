@@ -5,13 +5,23 @@ import com.amadeus.resources.FlightOfferSearch;
 import com.amadeus.resources.Location;
 import com.amadeus.referenceData.Locations;
 import com.amadeus.exceptions.ResponseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 enum AmadeusConnect {
     INSTANCE;
     private Amadeus amadeus;
+
+    @Value("${amadeus.id}")
+    private String id;
+
+    @Value("${amadeus.secret}")
+    private String secret;
+
+
     private AmadeusConnect() {
         this.amadeus = Amadeus
-            .builder("K5Pt36mO5BoybeehWw4fhpLXexkTDgZw", "wGqvPHt3cW8Sn19g")
+            .builder(id, secret)
             .build();
     }
 
