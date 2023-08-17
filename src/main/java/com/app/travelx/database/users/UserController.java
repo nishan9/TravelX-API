@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @CrossOrigin
 @RequestMapping("api/users")
@@ -18,6 +20,8 @@ public class UserController {
     UserRepository userRepository;
     @Autowired
     UserService userService;
+
+    SMSService smsService;
 
     @Autowired
     private BearerTokenWrapper tokenWrapper;
@@ -54,9 +58,12 @@ public class UserController {
         return new ResponseEntity<>(BookingIDs, HttpStatus.OK);
     }
 
+
     @PutMapping("/changeIsPaid")
     public ResponseEntity changeIsPaid(@RequestBody ChangeIsPaidModel RequestChange) {
         userService.ChangeIsPaid(RequestChange.BookingIDs, RequestChange.auth0id);
+        SMSRequest smsRequest = new SMSRequest("+447596474645", "Thank you for using GetYourWay! You have successfully booked a flight!");
+        smsService.sendSMS(smsRequest);
         return new ResponseEntity<>("now paid", HttpStatus.OK);
     }
 
