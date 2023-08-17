@@ -24,10 +24,9 @@ public class WeatherModel {
     private float maxApparentTemp;
     private float minApparentTemp;
     private float wind;
-    private float uvMax;
     private float rainSum;
     private int precipitationProbMax;
-    private float snowSum;
+    private float uvMax;
     private String sunrise;
     private String sunset;
 }
