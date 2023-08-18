@@ -9,6 +9,7 @@ import com.amadeus.resources.Location;
 @Service
 public class AmadeusServiceImpl implements AmadeusService {
 
+
     @Override
     public Location[] location(String keyword) throws ResponseException {
         return AmadeusConnect.INSTANCE.location(keyword);

@@ -21,74 +21,36 @@ public class WeatherController {
     @Autowired
     private WeatherService service;
 
-//    @GetMapping()
-//    public ResponseEntity<WeatherModel> weather(@RequestParam(required = true) String latitude,
-//            @RequestParam(required = true) String longitude,
-//            @RequestParam(required = true) String date) throws ResponseException {
-//        return service.getWeather(latitude, longitude, date);
-//    }
-//
-//
-//    @Timed
-//    @Transactional(timeout = 120)
-//    @GetMapping("/week")
-//    public ArrayList<WeatherModel> detailWeather(@RequestParam(required = true) String latitude,
-//                                                                 @RequestParam(required = true) String longitude,
-//                                                                 @RequestParam(required = true) String date) throws ResponseException {
-//
-//
-//        return null;
-//
+    /**
+     *
+     * @param latitude coordinate of airport
+     * @param longitude coordinate of airport
+     * @param date of travel in format yyyy-mm-dd
+     * @return weather details for requested date and location such as temperature, wind etc.
+     * @throws ResponseException
+     */
+    @GetMapping()
+    public ResponseEntity<WeatherModel> weather(@RequestParam(required = true) String latitude,
+            @RequestParam(required = true) String longitude,
+            @RequestParam(required = true) String date) throws ResponseException {
+        return service.getWeather(latitude, longitude, date);
+    }
 
 
+    /**
+     *
+     * @param latitude coordinate of airport
+     * @param longitude coordinate of airport
+     * @param date of travel
+     * @return array of daily summary of weather for the next 6 days or 6 days from current day
+     * @throws ResponseException
+     */
+    @GetMapping("/week")
+    public ResponseEntity<ArrayList<WeatherModel>> detailWeather(@RequestParam(required = true) String latitude,
+                                                                 @RequestParam(required = true) String longitude,
+                                                                 @RequestParam(required = true) String date) throws ResponseException {
 
-
-
-        public void test() {
-
-            float latitude = (float) 52.21;
-            float longitude = (float) -13.01;
-            String date = "2023-08-23";
-            ExecutorService executor = Executors.newSingleThreadExecutor();
-
-            // Wrap the API call in a Callable
-            Callable<String> apiCall = () -> {
-                // Simulate an API call
-                Thread.sleep(3000);
-                return "API call result";
-            };
-
-            // Submit the Callable to the executor service.getWeather(latitude, longitude, date)
-            Future<String> future = executor.submit(apiCall);
-
-            try {
-                // Wait for the result with a timeout
-                String result = future.get(2, TimeUnit.SECONDS);
-                System.out.println("API call result: " + result);
-            } catch (TimeoutException e) {
-                System.out.println("API call timed out");
-            } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
-            } finally {
-                executor.shutdown();
-            }
-        }
-
-
-
-//        @GetMapping("/w")
-//    public Callable<String> detailWeather(@RequestParam(required = true) String latitude,
-//                                          @RequestParam(required = true) String longitude,
-//                                          @RequestParam(required = true) String date) throws InterruptedException {
-//        return new Callable<String>() {
-//            @Override
-//            public String call() throws Exception {
-//
-//                Thread.sleep(8000); //this will cause a timeout
-//                return "foobar";
-//            }
-//        };
-//    }
-
+        return service.detailedWeather(latitude, longitude, date);
+    }
 
 }
