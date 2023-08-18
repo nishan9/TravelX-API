@@ -15,12 +15,27 @@ enum AmadeusConnect {
             .build();
     }
 
+    /**
+     *
+     * @param keyword passes in the name of the city with the airport
+     * @return returns flight code details and city where airport located
+     * @throws ResponseException if api call fails
+     */
     public Location[] location(String keyword) throws ResponseException {
         return amadeus.referenceData.locations.get(Params
             .with("keyword", keyword)
             .and("subType", Locations.AIRPORT));
     }
 
+    /**
+     *
+     * @param origin city name of the departing airport
+     * @param destination city name of the arrival airport
+     * @param departDate depart date in the format of yyyy-mm-dd
+     * @param adults number of passengers
+     * @return array of available flights from api call
+     * @throws ResponseException
+     */
     public FlightOfferSearch[] flights(String origin, String destination, String departDate, String adults) throws ResponseException {
         return amadeus.shopping.flightOffersSearch.get(
                 Params.with("originLocationCode", origin)

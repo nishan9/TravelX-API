@@ -12,7 +12,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-
+/**
+ * format of returning weather data
+ */
 @AllArgsConstructor
 @Getter
 @Setter

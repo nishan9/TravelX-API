@@ -18,6 +18,14 @@ public class WeatherController {
     @Autowired
     private WeatherService service;
 
+    /**
+     *
+     * @param latitude coordinate of airport
+     * @param longitude coordinate of airport
+     * @param date of travel in format yyyy-mm-dd
+     * @return weather details for requested date and location such as temperature, wind etc.
+     * @throws ResponseException
+     */
     @GetMapping()
     public ResponseEntity<WeatherModel> weather(@RequestParam(required = true) String latitude,
             @RequestParam(required = true) String longitude,
@@ -25,6 +33,15 @@ public class WeatherController {
         return service.getWeather(latitude, longitude, date);
     }
 
+
+    /**
+     *
+     * @param latitude coordinate of airport
+     * @param longitude coordinate of airport
+     * @param date of travel
+     * @return array of daily summary of weather for the next 6 days or 6 days from current day
+     * @throws ResponseException
+     */
     @GetMapping("/week")
     public ResponseEntity<ArrayList<WeatherModel>> detailWeather(@RequestParam(required = true) String latitude,
                                                                  @RequestParam(required = true) String longitude,
