@@ -1,7 +1,6 @@
 package com.app.travelx.weather;
 
 import com.amadeus.exceptions.ResponseException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.Transactional;
+import java.sql.Array;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.concurrent.*;
 
 @RestController
 @RequestMapping("/api/weather")
@@ -49,4 +52,5 @@ public class WeatherController {
 
         return service.detailedWeather(latitude, longitude, date);
     }
+
 }

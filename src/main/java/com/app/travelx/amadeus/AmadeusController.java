@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.lang.reflect.Array;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 @RestController
@@ -52,6 +54,13 @@ public class AmadeusController {
 			flights.add(new FlightInfoModel(departLocation, arrivalLocation, departTime, arrivalTime, airline, currency, totalPrice,
 					availableSeats, duration));
 		}
+
+		Comparator<FlightInfoModel> timeComparator = Comparator.comparing(
+				flight -> LocalTime.parse(flight.getDepartTime().substring(11))
+		);
+
+		// Sort flights based on the custom time comparator
+		flights.sort(timeComparator);
 		return new ResponseEntity<> (flights, HttpStatus.OK);
 	}
 

@@ -1,4 +1,4 @@
-package com.app.travelx.sms;
+package com.app.travelx.database.users;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
