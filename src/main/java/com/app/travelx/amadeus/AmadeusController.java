@@ -24,7 +24,15 @@ public class AmadeusController {
 	@Autowired
 	private AmadeusService amadeusService;
 
-
+	/**
+	 * gets available flights and formats it to easily manipulate from api call
+	 * @param origin city of depart airport
+	 * @param destination city or arrival airport
+	 * @param departDate of travel
+	 * @param adults number of passengers
+	 * @return arraylist of available flights in formated fields from api call
+	 * @throws ResponseException
+	 */
 	@GetMapping
 	public ResponseEntity<ArrayList<FlightInfoModel>> getFlights (@RequestParam(required=true) String origin,
 																  @RequestParam(required=true) String destination,
@@ -55,6 +63,13 @@ public class AmadeusController {
 		flights.sort(timeComparator);
 		return new ResponseEntity<> (flights, HttpStatus.OK);
 	}
+
+	/**
+	 * gets all airports in the requested city
+	 * @param keyword passes the name of the city the airport is in or the airport code
+	 * @return the airport code, city, latitude and longitude coordinates
+	 * @throws ResponseException
+	 */
 	@GetMapping("/locations")
 	public ResponseEntity<ArrayList<SuggestionsModel>> locations(@RequestParam(required=true) String keyword) throws ResponseException {
 		Location [] results = AmadeusConnect.INSTANCE.location(keyword);

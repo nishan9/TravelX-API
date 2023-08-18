@@ -15,11 +15,18 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 @Service
 public class WeatherService {
     private final RestTemplate restTemplate = new RestTemplate();
 
+
+    /**
+     * it gives a weather daily summary of the date requested unless it is outside of the next 16 days, then it returns null
+     * @param latitude coordinate of airport
+     * @param longitude coordinate of airport
+     * @param date of travel
+     * @return a daily summary of the weather requested with the given coordinates and date
+     */
     public ResponseEntity<WeatherModel> getWeather(String latitude, String longitude, String date) {
 
         try {
@@ -71,6 +78,13 @@ public class WeatherService {
         }
     }
 
+    /**
+     * gives daily weather summary for 6 days from requested day unless it is outside of 16 days then it returns next 6 days from current date or next 6 days from 10 days
+     * @param latitude coordinate of airport
+     * @param longitude coordinate of airport
+     * @param date of travel date
+     * @return daily summary of 6 days weather
+     */
     public ResponseEntity<ArrayList<WeatherModel>> detailedWeather(String latitude, String longitude, String date){
         try{
             if (checkDateFormat(date)){
@@ -93,6 +107,11 @@ public class WeatherService {
         }
     }
 
+    /**
+     * converts weather code into more understandable word summary
+     * @param code WMO code
+     * @return the word describing the daily summary
+     */
     public String weatherCode(int code) {
         if (code <= 1) {
             return "Sunny";
@@ -111,6 +130,11 @@ public class WeatherService {
         }
     }
 
+    /**
+     * checks the input date is in the right format
+     * @param inputDate of travel
+     * @return boolean if it is in correct format or not
+     */
     public boolean checkDateFormat(String inputDate) {
         String regex = "\\d{4}-\\d{2}-\\d{2}";
         Pattern pattern = Pattern.compile(regex);
@@ -119,6 +143,11 @@ public class WeatherService {
         return matcher.matches();
     }
 
+    /**
+     * checks if input date is within 16 days
+     * @param inputDate of travel
+     * @return boolean to test if it is within 16 days
+     */
     public boolean isDateWithin16Days(String inputDate) {
         LocalDate currentDate = LocalDate.now();
 
@@ -130,6 +159,11 @@ public class WeatherService {
         return Math.abs(daysDifference) <= 16;
     }
 
+    /**
+     * calculates what the start date will be to calculate the next 6 days worth of data since api call cannot give weather outside of 16 days
+     * @param inputDate of travel
+     * @return start date to calculate the next 6 days worth of data that is closest to travel date or sends current date if not available
+     */
     public LocalDate calcStart(String inputDate) {
         LocalDate currentDate = LocalDate.now();
 

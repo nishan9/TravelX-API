@@ -36,6 +36,11 @@ public class AmadeusControllerTest {
         MockitoAnnotations.initMocks(this);
     }
 
+
+    /**
+     * Tests if the function in service processes the API and formats the necessary data in the correct fields
+     * @throws ResponseException
+     */
     @Test
     public void testGetFlights() throws ResponseException {
 
@@ -63,6 +68,13 @@ public class AmadeusControllerTest {
 
     }
 
+
+    /**
+     * Tests a service function by calling the controller and validating if the city name and coordinates are returned correctly from the airport code
+     * @throws JsonProcessingException
+     * @throws ResponseException
+     * @throws Exception
+     */
     @Test
     public void testLocations() throws JsonProcessingException, ResponseException, Exception {
         SuggestionsModel testLocation = new SuggestionsModel("HEATHROW", "LHR", "LONDON", 51.4775, -0.46138);
